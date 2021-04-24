@@ -1,12 +1,10 @@
 from django.db import models
 
-# Create your models here.
-class Contenido(models.Model):
-    clave = models.CharField(max_length=64)
-    valor = models.TextField()
+# Create the content model
+class Content(models.Model):
 
-class Comentario(models.Model):
-    contenido = models.ForeignKey(Contenido, on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=200)
-    cuerpo = models.TextField(blank=False)
-    fecha = models.DateTimeField('publicado')
+    key = models.CharField(max_length=64)
+    value = models.TextField()
+
+    def __str__(self):
+        return self.key + ": " + self.value
